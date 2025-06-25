@@ -32,19 +32,23 @@
 
 
 //Ejercicio 2 Manejo de errores con try y catch
-// async function validarEdad(edad){
-//     return new Promise((resolve,reject)=>{
-//         if (edad >= 18){
-//             resolve("Mayor edad")
-//         }
-//         else reject("Menor de edad")
-//     }).then((mensaje) =>{
-//         console.log(mensaje)
-//     }).catch((mensaje) =>{
-//         console.log(mensaje)
-//     }), 1000
-// }
-// await validarEdad(18)
+async function validarEdad(edad) {
+    try {
+        const mensaje = await new Promise((resolve, reject) => {
+            setTimeout(() => {
+                if (edad >= 18) {
+                    resolve("Mayor edad");
+                } else {
+                    reject("Menor de edad");
+                }
+            }, 1000);
+        });
+        console.log(mensaje);
+    } catch (mensaje) {
+        console.log(mensaje);
+    }
+}
+await validarEdad(18);
 
 //Ejercicio 3 - Llamadas Secuenciales con Async/Await
 
